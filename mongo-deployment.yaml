@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: mongo
+  name: mongo
+  namespace: webdev-nav
+spec:
+  serviceName: mongo
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secrets
+              key: MONGO_INITDB_ROOT_USERNAME
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secrets
+              key: MONGO_INITDB_ROOT_PASSWORD
+        image: mongo:4.4.10-rc0-focal
+        imagePullPolicy: ""
+        name: mongo
+        ports:
+        - containerPort: 27017
+        resources: {}
+        volumeMounts:
+        - mountPath: /data/db
+          name: mongo-claim0
+      restartPolicy: Always
+      serviceAccountName: ""  
+      volumes:
+      - name: mongo-claim0
+        persistentVolumeClaim:
+          claimName: mongo-claim0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mongo
+  name: mongo
+  namespace: webdev-nav
+spec:
+  ports:
+  - port: 27017
+    targetPort: 27017
+  clusterIP: None
+  selector:
+    app: mongo
+
+
+
+# *--****************fin    
+# apiVersion: apps/v1
+
+# kind: Deployment
+
+# metadata:
+#   name: mongo-deployment
+#   namespace: webdev-nav
+#   labels:
+#     app: mongo-deployment
+
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: mongo-pod
+
+#   template:
+#     metadata:
+#       name: mongo-pod
+#       labels:
+#         app: mongo-pod
+
+#     spec:
+#       containers:
+#         - name: mongodb-container
+#           resources: {}
+#           image: mongo:4.4.10-rc0-focal
+#           volumeMounts:
+#             - name: mongo-pvc
+#               mountPath: /var/lib/mysql
+            
+#           env: 
+#             - name: MONGO_INITDB_DATABASE
+#               value: database
+#             - name: MONGO_INITDB_ROOT_USERNAME
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: secret-demo
+#                   key: username
+#             - name: MONGO_INITDB_ROOT_PASSWORD
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: secret-demo
+#                   key: password
+#           ports:
+#             - containerPort: 27017 

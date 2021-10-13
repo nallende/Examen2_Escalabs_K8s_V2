@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: resource-quota
+  namespace: webdev-nav
+
+spec:
+  hard:
+    configmaps: "4"
+    persistentvolumeclaims: "4"
+    pods: "16"
+    replicationcontrollers: "6"
+    secrets: "4"
+    services: "6"
+    services.loadbalancers: "5"

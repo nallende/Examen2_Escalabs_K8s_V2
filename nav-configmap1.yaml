@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mogodb-configmap1
+  namespace: webdev-nav
+data: {}
+  #database_name:  #fake base dentro de la BBDD
+  

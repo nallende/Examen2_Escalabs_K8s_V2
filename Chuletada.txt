@@ -1,0 +1,88 @@
+# Moving to Declarative Kubernetes YAML
+
+## Kubectl Apply
+
+kubectl apply -f filename.yml
+
+
+
+microk8s.kubectl create -f webdev-nav.yaml
+microk8s.kubectl create -f mongo-pv.yaml
+microk8s.kubectl create -f mongo-pvc.yaml
+
+microk8s.kubectl create -f nav-secrets.yaml
+microk8s.kubectl create -f nav-secrets.yaml
+
+
+microk8s.kubectl create -f resource-quota.yaml
+
+
+microk8s.kubectl create -f server-deployment.yaml
+microk8s.kubectl create -f server-service.yaml
+
+microk8s.kubectl create -f mongo-deployment.yaml
+microk8s.kubectl create -f mongo-service.yaml
+
+microk8s.kubectl create -f nginx-deployment.yaml
+microk8s.kubectl create -f nginx-service.yaml
+
+
+
+
+microk8s kubectl -n kube-system get secret | grep default-token 
+microk8s kubectl -n kube-system describe secret default-token-s4znc 
+
+
+microk8s.kubectl get all --all-namespaces  
+
+microk8s.kubectl delete deploy server-deployment
+microk8s.kubectl stop server-service
+
+microk8s.kubectl delete deploy nginx-deployment
+microk8s.kubectl stop nginx-service
+
+microk8s.kubectl delete deploy mongo-deployment
+microk8s.kubectl stop mongo-service
+
+microk8s.kubectl delete deploy server-deployment
+microk8s.kubectl delete deploy server-service
+
+microk8s.kubectl delete deploy node-deployment
+
+microk8s.kubectl delete ns webdev-nav
+
+
+echo -n 'user' | base64
+echo -n 'password' | base64
+
+
+kubectl apply -f myfile.yaml
+
+
+
+## Building Your YAML Files
+
+kubectl api-resources
+
+kubectl api-versions
+
+## Dry Runs y Diffs
+
+kubectl apply -f app.yml --dry-run
+
+kubectl apply -f app.yml --server-dry-run
+
+kubectl diff -f app.yml
+
+## Labels y Label Selectors
+
+kubectl get pods -l app=nginx
+
+kubectl apply -f myfile.yaml -l app=nginx
+
+kubectl get all
+
+kubectl delete <resource type>/<resource name>
+
+
+

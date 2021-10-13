@@ -1,0 +1,29 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: webdev-nav
+  selfLink: /api/v1/namespaces/webdev-nav
+  uid: c63ad356-d903-4177-b02d-752e3ae7ad81
+  resourceVersion: '65902'
+  creationTimestamp: '2021-10-11T13:43:41Z'
+  labels:
+    kubernetes.io/metadata.name: webdev-nav
+    name: webdev-nav
+  managedFields:
+    - manager: dashboard
+      operation: Update
+      apiVersion: v1
+      time: '2021-10-11T13:43:41Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:kubernetes.io/metadata.name': {}
+            'f:name': {}
+spec:
+  finalizers:
+    - kubernetes
+status:
+  phase: Active
+

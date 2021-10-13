@@ -1,0 +1,1 @@
+FROM mongo:4.4.10-rc0-focal
