@@ -22,6 +22,7 @@ spec:
 
     spec:
       containers:
+      
         - name: frontend-container
           image: neosoporte/frontendvm
           imagePullPolicy: Always

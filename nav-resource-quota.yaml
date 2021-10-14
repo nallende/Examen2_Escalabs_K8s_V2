@@ -6,10 +6,10 @@ metadata:
 
 spec:
   hard:
-    configmaps: "4"
+    configmaps: "5"
     persistentvolumeclaims: "4"
-    pods: "16"
+    pods: "20"
     replicationcontrollers: "6"
     secrets: "4"
-    services: "6"
+    services: "8"
     services.loadbalancers: "5"

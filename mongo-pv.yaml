@@ -13,7 +13,6 @@ spec:
   - ReadWriteOnce
  hostPath:
   path: "/mnt/mongo_data"
-
 # apiVersion: v1
 # kind: PersistentVolume
 # metadata:

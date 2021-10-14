@@ -11,10 +11,10 @@ microk8s.kubectl create -f mongo-pv.yaml
 microk8s.kubectl create -f mongo-pvc.yaml
 
 microk8s.kubectl create -f nav-secrets.yaml
-microk8s.kubectl create -f nav-secrets.yaml
 
+microk8s.kubectl create -f nav-hpa.yaml 
 
-microk8s.kubectl create -f resource-quota.yaml
+microk8s.kubectl create -f nav-resource-quota.yaml
 
 
 microk8s.kubectl create -f server-deployment.yaml
@@ -26,8 +26,13 @@ microk8s.kubectl create -f mongo-service.yaml
 microk8s.kubectl create -f nginx-deployment.yaml
 microk8s.kubectl create -f nginx-service.yaml
 
+microk8s.kubectl create -f nav-configmap1.yaml
 
+microk8s.kubectl create -f nav-configmap1.yaml
 
+microk8s.kubectl create -f nav-ingress.yaml
+
+microk8s.kubectl get ingress
 
 microk8s kubectl -n kube-system get secret | grep default-token 
 microk8s kubectl -n kube-system describe secret default-token-s4znc 
@@ -49,11 +54,36 @@ microk8s.kubectl delete deploy server-service
 
 microk8s.kubectl delete deploy node-deployment
 
+microk8s.kubectl get svc -n kubernets-dasboard
+
+
+microk8s.kubectl create -f 
+
 microk8s.kubectl delete ns webdev-nav
 
 
 echo -n 'user' | base64
 echo -n 'password' | base64
+
+
+
+
+
+
+microk8s.kubectl config get-contexts
+microk8s.kubectl config current-contexts
+microk8s.kubectl config use-context microk8s
+microk8s.kubectl config set-context webdev-nav --namespace=webdev-nav --user=kubernetes-admin --cluster=kubernetes 
+ 
+kubectl config delete-context
+
+RBAC
+
+creando usuario:
+
+openssl genrsa -out cbh.key 4096    
+
+
 
 
 kubectl apply -f myfile.yaml

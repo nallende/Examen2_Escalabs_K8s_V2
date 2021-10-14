@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  creationTimestamp: null
+  #creationTimestamp: null
   labels:
     run: liveness-exec
   namespace: webdev-nav
@@ -27,5 +27,5 @@ spec:
       initialDelaySeconds: 5
       periodSeconds: 5
   dnsPolicy: ClusterFirst
-  restartPolicy: Always
+  restartPolicy: OnFailure
 status: {}

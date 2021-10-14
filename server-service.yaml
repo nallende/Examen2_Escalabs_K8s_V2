@@ -9,7 +9,7 @@ metadata:
     app: node-service
     
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 3000
